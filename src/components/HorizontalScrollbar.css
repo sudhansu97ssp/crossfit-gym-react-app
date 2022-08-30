@@ -1,0 +1,13 @@
+
+#slider{
+    display:flex;
+    justify-content: center;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+#slider::-webkit-scrollbar{
+    width: 0;
+}
+
