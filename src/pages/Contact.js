@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import emailjs from "emailjs-com";
 import "../Contact.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FaEnvelope, FaMapMarked, FaClock } from "react-icons/fa";
+import { FiPhoneCall } from "react-icons/fi";
 
 const Contact = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
   function sendEmail(e) {
     e.preventDefault();
 
@@ -20,6 +25,10 @@ const Contact = () => {
         console.log(res);
       })
       .catch((err) => console.log(err));
+
+    setName("");
+    setEmail("");
+    setMessage("");
   }
   return (
     <>
@@ -33,19 +42,19 @@ const Contact = () => {
           <h3>Head Office</h3>
           <div>
             <li>
-              <FontAwesomeIcon icon="fa-solid fa-map-location-dot" />
-              <p>Electronic city Phase-II, Bengaluru, Karnataka</p>
+              <FaMapMarked />
+              <p> Electronic city Phase-II, Bengaluru, Karnataka</p>
             </li>
             <li>
-              <FontAwesomeIcon icon="fa-solid fa-mailbox" />
-              <p>sudhansu.spati96@gmail.com</p>
+              <FaEnvelope />
+              <p> sudhansu.spati96@gmail.com</p>
             </li>
             <li>
-              <FontAwesomeIcon icon="fa-solid fa-phone" />
-              <p>+91-7008538962</p>
+              <FiPhoneCall />
+              <p> +91-7008538962</p>
             </li>
             <li>
-              <FontAwesomeIcon icon="fa-regular fa-clock-desk" />
+              <FaClock />
               <p style={{ fontWeight: 100 }}>
                 Monday to Sunday 9.00AM - 10.00PM
               </p>
@@ -78,7 +87,9 @@ const Contact = () => {
                 <Form.Control
                   type="text"
                   name="name"
+                  value={name}
                   placeholder="Enter Your Name"
+                  onChange={(e) => setName(e.target.value)}
                 />
               </Form.Group>
               <Form.Label>Email Address</Form.Label>
@@ -86,7 +97,9 @@ const Contact = () => {
                 <Form.Control
                   type="email"
                   name="email"
+                  value={email}
                   placeholder="Enter email"
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </Form.Group>
               <Form.Label>Message</Form.Label>
@@ -97,7 +110,9 @@ const Contact = () => {
                 <Form.Control
                   type="text"
                   name="message"
+                  value={message}
                   placeholder="Message"
+                  onChange={(e) => setMessage(e.target.value)}
                 />
               </Form.Group>
               <Button
